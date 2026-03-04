@@ -1,23 +1,18 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "frontend/**",
-      "use": "@vercel/static"
-    }
+    { "src": "wsgi.py", "use": "@vercel/python" },
+    { "src": "frontend/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/trending", "dest": "app.py" },
-    { "src": "/news", "dest": "app.py" },
-    { "src": "/stats", "dest": "app.py" },
-    { "src": "/analytics", "dest": "app.py" },
-    { "src": "/search", "dest": "app.py" },
-    { "src": "/sources", "dest": "app.py" },
-    { "src": "/docs", "dest": "app.py" },
+    { "src": "/trending", "dest": "wsgi.py" },
+    { "src": "/news", "dest": "wsgi.py" },
+    { "src": "/stats", "dest": "wsgi.py" },
+    { "src": "/analytics", "dest": "wsgi.py" },
+    { "src": "/search", "dest": "wsgi.py" },
+    { "src": "/sources", "dest": "wsgi.py" },
+    { "src": "/docs", "dest": "wsgi.py" },
+    { "src": "/", "dest": "wsgi.py" },
     { "src": "/(.*)", "dest": "frontend/$1" }
   ]
 }
