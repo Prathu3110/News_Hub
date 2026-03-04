@@ -37,29 +37,33 @@ def fetch_hackernews():
 """news from reddit"""
 def fetch_reddit():
     articles = []
-    
     subreddits = ['news', 'worldnews', 'technology', 'indianews']
     
     for subreddit in subreddits:
-        url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=5'
-        
-        headers = {'User-Agent': 'NewsAggregator/1.0'}
-        response = requests.get(url, headers=headers)
-        data = response.json()
-        
-        posts = data['data']['children']
+        try:
+            url = f'https://www.reddit.com/r/{subreddit}/hot.json?limit=5'
+            headers = {'User-Agent': 'NewsAggregator/1.0'}
+            response = requests.get(url, headers=headers, timeout=5)
+            
+            if response.status_code != 200:
+                continue
+                
+            data = response.json()
+            posts = data['data']['children']
 
-        for post in posts:
-            post_data = post['data']
-            if not post_data['is_self']:
-                articles.append({
-                    'title': post_data['title'],
-                    'url': post_data['url'],
-                    'score': post_data['score'],
-                    'subreddit': post_data['subreddit'],
-                    'created_utc': post_data['created_utc'],
-                    'num_comments': post_data['num_comments']
-                })
+            for post in posts:
+                post_data = post['data']
+                if not post_data['is_self']:
+                    articles.append({
+                        'title': post_data['title'],
+                        'url': post_data['url'],
+                        'score': post_data['score'],
+                        'subreddit': post_data['subreddit'],
+                        'created_utc': post_data['created_utc'],
+                        'num_comments': post_data['num_comments']
+                    })
+        except Exception:
+            continue
     
     return articles
 
