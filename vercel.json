@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/trending", "dest": "app.py" },
+    { "src": "/news", "dest": "app.py" },
+    { "src": "/stats", "dest": "app.py" },
+    { "src": "/analytics", "dest": "app.py" },
+    { "src": "/search", "dest": "app.py" },
+    { "src": "/sources", "dest": "app.py" },
+    { "src": "/docs", "dest": "app.py" },
+    { "src": "/(.*)", "dest": "frontend/$1" }
+  ]
+}
