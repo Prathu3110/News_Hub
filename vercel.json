@@ -13,9 +13,8 @@
     { "src": "/sources", "dest": "wsgi.py" },
     { "src": "/docs", "dest": "wsgi.py" },
     { "src": "/debug", "dest": "wsgi.py" },
-    { "src": "/", "dest": "frontend/index.html" },
-    { "src": "/index.html", "dest": "frontend/index.html" },
     { "src": "/style.css", "dest": "frontend/style.css" },
-    { "src": "/script.js", "dest": "frontend/script.js" }
+    { "src": "/script.js", "dest": "frontend/script.js" },
+    { "src": "/(.*)", "dest": "frontend/index.html" }
   ]
 }
