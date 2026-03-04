@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsHub - News Aggregator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="animated-bg" id="bg"></div>
+    
+    <header>
+        <div class="header-content">
+            <div class="logo">NewsHub</div>
+            <nav class="nav-buttons">
+                <button class="nav-btn" onclick="loadStats()">Statistics</button>
+                <button class="nav-btn" onclick="loadAnalytics()">Analytics</button>
+                <button class="nav-btn" onclick="showAbout()">About</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1> News Aggregator</h1>
+            <p>Real-time news from multiple </p>
+        </section>
+
+        <section class="stats-bar" id="statsBar">
+            <div class="stat-card">
+                <span class="stat-number" id="totalArticles">0</span>
+                <span class="stat-label">Total Articles</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="totalSources">3</span>
+                <span class="stat-label">News Sources</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="positiveCount">0</span>
+                <span class="stat-label">Positive Sentiment</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="categoryCount">5</span>
+                <span class="stat-label">Categories</span>
+            </div>
+        </section>
+
+        <section class="filters">
+            <button class="filter-btn active" onclick="filterNews('all')">All News</button>
+            <button class="filter-btn" onclick="filterNews('technology')">Technology</button>
+            <button class="filter-btn" onclick="filterNews('business')">Business</button>
+            <button class="filter-btn" onclick="filterNews('sports')">Sports</button>
+            <button class="filter-btn" onclick="filterNews('entertainment')">Entertainment</button>
+            <button class="filter-btn" onclick="filterNews('general')">General</button>
+        </section>
+
+        <section class="search-section">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search articles by keyword..." 
+                class="search-input"
+            >
+            <button onclick="searchArticles()" class="search-btn">Search</button>
+        </section>
+
+        <div id="keywordSection"></div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading latest news...</p>
+        </div>
+
+        <div class="news-grid" id="newsGrid"></div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy;  News Aggregator | Powered by NewsAPI, HackerNews & Reddit</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
